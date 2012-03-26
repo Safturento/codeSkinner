@@ -40,20 +40,11 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
 		<script src="codeSkinner.js"></script>
-		<script id="pre-template" type="text/x-handlebars-template">
-			<ol class="code">
-				{{#each this}}
-					<li {{#if isOdd}} class="odd" {{/if}}>{{code}}</li>
-				{{/each}}
-			</ol>
-		</script>
 	</body>
 	<footer>
 		<script>
 			(function(){
-				codeSkinner.init({
-					template: $('#pre-template').html()
-				});
+				codeSkinner.init();
 			})();
 		</script>
 	</footer>
