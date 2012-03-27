@@ -13,7 +13,7 @@
 					codeArray = [];
 				$.each($this.text().split('\n'), function(i, line){
 					codeArray[i] = {
-						isOdd: (i%2==0),
+						isOdd: i%2,
 						code: line
 					};
 				})
