@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>codeSkinner Demo</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	</head>
+	<body>
+		<div id="main">
+
+<pre data-line="21">if ( typeof Object.create !== 'function' ) {
+	Object.create = function( obj ) {
+		function F() {};
+		F.prototype = obj;
+		return new F();
+	};
+}</pre>
+
+<pre>if ( typeof Object.create !== 'function' ) {
+	Object.create = function( obj ) {
+		function F() {};
+		F.prototype = obj;
+		return new F();
+	};
+}
+
+(function($, window, document, undefined){
+	var SkinnedCode = {
+		init: function( options, elem ){
+			this.options =  options;
+
+			// console.log(this.options.template);
+
+			var self = this;
+			self.elem = elem;
+			self.$elem = $(elem);
+
+			this.skin(self.$elem);
+		},
+
+		skin: function(element){
+				template = this.options.template;
+				console.log(template);
+			element.each(function(){
+				var $this = $(this),
+					codeArray = [],
+					offset = $this.data('line') || 0;
+				$.each($this.text().split('\n'), function(i, line){
+					codeArray[i] = {
+						number: i+offset,
+						code: line
+					}
+				})
+				skin = Handlebars.compile(template);
+				$this.replaceWith(skin(codeArray));
+			});
+		},
+	}
+
+	$.fn.codeSkinner = function( options ) {
+		return this.each(function() {
+			var code = Object.create( SkinnedCode );
+			
+			code.init( options, this );
+			$.data( this, 'codeSkinner', code );
+		});
+	};
+
+	// $.fn.codeSkinner.options = {
+
+	// };
+
+})( jQuery, window, document );</pre>
+		</div>
+	</body>
+	<footer>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+		<script src="code-skinner.js"></script>
+
+		
+		<script>
+			$('pre').codeSkinner();
+		</script>
+		<link rel="stylesheet" href="http://yandex.st/highlightjs/6.1/styles/default.min.css">
+		<script src="http://yandex.st/highlightjs/6.1/highlight.min.js"></script>
+	</footer>
+</html>

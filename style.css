@@ -1,0 +1,51 @@
+@font-face {
+	font-family: SempReg;
+	src: url('semplice.ttf');
+	font-weight:400;
+}
+* {margin:0; padding:0;}
+
+html{background: #222; overflow-y: scroll;}
+html, body, #main{width: 100%; }
+#main{padding:20px;}
+.outerCodeWrapper {
+	width: 500px;
+	margin: 20px auto;
+}
+.innerCodeWrapper {
+	overflow:auto;
+	font-family: SempReg; color: #d4d4d4; font-size: 8px; line-height: 1.5em;
+	background: #1e2121; border: 1px solid #000;
+}
+
+.innerCodeWrapper ul{ padding:10px; }
+.innerCodeWrapper li{list-style: none; white-space: pre; cursor:default; }
+.code li:hover{ background:#2b2e2e; }
+.code {padding-right:0 !important;}
+.gutter{
+	height: 100%;
+	color: #6b6d6d;
+	background: #2b2e2e;
+	border-right: 1px dashed #000;
+	float:left; display:inline;
+	margin-right: 10px;
+}
+.buttons{
+	margin-bottom: -30px;
+	height: 20px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.buttons button{
+	border: 1px solid #000;background:#131515;
+	border-radius: 5px;
+	font-family: SempReg; color: #6b6d6d; font-size: 8px; line-height: 1.5em;
+	display:inline;
+	float:right;
+	z-index: 2;
+	padding: 0 6px 4px;
+}
+.buttons button {		background:#131515; }
+.buttons button:hover{ 	background:#2b2e2e; }
+.buttons button:active{	background:#1e2121; }
+.buttons button.active{ color: #ddf4f9; }
